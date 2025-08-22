@@ -10,200 +10,45 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="data:image/svg+xml;charset=UTF-8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'><rect width='100%25' height='100%25' fill='black'/><text x='50%25' y='50%25' fill='white' font-size='56' font-family='Arial' text-anchor='middle' dominant-baseline='middle'>Gym Partner Application</text></svg>">
   <style>
-    :root {
-      --bg: #0b0b0f;
-      --card: #15151c;
-      --muted: #9aa0a6;
-      --text: #e8eaed;
-      --accent: #8be28b;
-      --danger: #ff6b6b;
-      --pill: #1f2a1f;
-      --border: #2a2a36;
-      --input: #101017;
-      --btn: #20202a;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: radial-gradient(1000px 600px at 10% -10%, #111122 0%, #0b0b0f 40%);
-      color: var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      line-height: 1.4;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-    }
-    .card {
-      width: 100%;
-      max-width: 680px;
-      background: linear-gradient(180deg, #15151c, #121219);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 22px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-      position: relative;
-      overflow: hidden;
-    }
-    .glow {
-      position: absolute;
-      inset: -40%;
-      background: radial-gradient(closest-side, rgba(139,226,139,0.08), transparent 70%);
-      filter: blur(20px);
-      pointer-events: none;
-    }
-    header {
-      display: flex;
-      gap: 14px;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-    .logo {
-      width: 46px; height: 46px;
-      border-radius: 12px;
-      display: grid; place-items: center;
-      background: conic-gradient(from 120deg, #2b2b3a, #1b1b26 50%, #2b2b3a);
-      border: 1px solid var(--border);
-      font-weight: 800;
-    }
-    .title-wrap h1 {
-      font-size: 1.15rem;
-      margin: 0;
-    }
-    .subtitle {
-      font-size: 0.92rem;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-    .pillbar {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 12px 0 20px;
-    }
-    .pill {
-      font-size: 0.78rem;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: #12121a;
-      color: var(--muted);
-    }
-    .pill.ok { background: var(--pill); color: var(--accent); border-color: #253125; }
-    .section {
-      padding: 14px;
-      border: 1px dashed var(--border);
-      border-radius: 12px;
-      margin-bottom: 16px;
-      background: rgba(255,255,255,0.01);
-    }
-    h2 {
-      font-size: 0.98rem; margin: 0 0 10px 0;
-    }
-    ul {
-      margin: 8px 0 0 16px;
-      color: var(--muted);
-    }
-    label { display: block; font-size: 0.92rem; margin: 8px 0 6px; }
-    input, select, textarea {
-      width: 100%;
-      padding: 12px 12px;
-      background: var(--input);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      color: var(--text);
-      outline: none;
-    }
-    .row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    .actions {
-      display: flex; gap: 10px; align-items: center; margin-top: 14px;
-      flex-wrap: wrap;
-    }
-    .btn {
-      cursor: pointer;
-      border: 1px solid var(--border);
-      background: var(--btn);
-      color: var(--text);
-      padding: 12px 16px;
-      border-radius: 12px;
-      font-weight: 600;
-      transition: transform .04s ease, background .2s;
-      user-select: none;
-    }
-    .btn:hover { transform: translateY(-1px); }
-    .btn.primary { background: linear-gradient(180deg, #2a2a3a, #1f1f2a); }
-    .btn.success { background: linear-gradient(180deg, #1f2a24, #162018); color: var(--accent); border-color: #253125; }
-    .tiny { font-size: 0.8rem; color: var(--muted); }
-    .divider { height: 1px; background: var(--border); margin: 14px 0; }
-    .footnotes { font-size: 0.82rem; color: var(--muted); }
-    .heart { color: var(--danger); }
-    .confetti {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .confetti span {
-      position: absolute;
-      font-size: 20px;
-      animation: fall 1.8s linear forwards;
-    }
-    @keyframes fall {
-      to {
-        transform: translateY(100vh) rotate(480deg);
-        opacity: 0;
-      }
-    }
-    .toast {
-      position: fixed;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 20px;
-      background: #0f1a11;
-      color: var(--accent);
-      border: 1px solid #253125;
-      border-radius: 10px;
-      padding: 10px 14px;
-      box-shadow: 0 8px 20px rgba(0,0,0,.35);
-      display: none;
-    }
-    .approved {
-      display: none;
-      text-align: center;
-      padding: 20px 14px;
-      border: 1px solid #253125;
-      border-radius: 12px;
-      background: rgba(139, 226, 139, 0.06);
-      color: var(--accent);
-      margin-top: 12px;
-    }
-    .approved h3 { margin: 0 0 8px 0; }
-    .note {
-      font-size: 0.86rem; color: var(--muted); margin-top: 6px;
-    }
-    .fake-captcha {
-      display: flex; gap: 8px; align-items: center; margin-top: 10px;
-      font-size: 0.88rem; color: var(--muted);
-    }
-    .checkbox {
-      inline-size: 18px; block-size: 18px; border-radius: 4px;
-      border: 1px solid var(--border);
-      background: var(--input);
-      display: grid; place-items: center;
-      cursor: pointer;
-    }
-    .checkbox.checked { background: #172117; border-color: #2b3b2b; color: var(--accent); }
-    .beta-tag { font-size: 0.72rem; color: var(--muted); margin-left: 6px; }
-    .footgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    @media (max-width: 560px) {
-      .row, .footgrid { grid-template-columns: 1fr; }
-    }
-    .link-row { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
-    .link-row code { background: #101017; border: 1px solid var(--border); padding: 6px 8px; border-radius: 8px; }
+    :root { --bg:#0b0b0f; --card:#15151c; --muted:#9aa0a6; --text:#e8eaed; --accent:#8be28b; --danger:#ff6b6b; --pill:#1f2a1f; --border:#2a2a36; --input:#101017; --btn:#20202a; }
+    *{box-sizing:border-box}
+    body{margin:0;background:radial-gradient(1000px 600px at 10% -10%, #111122 0%, #0b0b0f 40%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";line-height:1.4;min-height:100vh;display:grid;place-items:center;padding:24px}
+    .card{width:100%;max-width:680px;background:linear-gradient(180deg,#15151c,#121219);border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:0 10px 30px rgba(0,0,0,.4);position:relative;overflow:hidden}
+    .glow{position:absolute;inset:-40%;background:radial-gradient(closest-side,rgba(139,226,139,.08),transparent 70%);filter:blur(20px);pointer-events:none}
+    header{display:flex;gap:14px;align-items:center;margin-bottom:12px}
+    .logo{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:conic-gradient(from 120deg,#2b2b3a,#1b1b26 50%,#2b2b3a);border:1px solid var(--border);font-weight:800}
+    .title-wrap h1{font-size:1.15rem;margin:0}
+    .subtitle{font-size:.92rem;color:var(--muted);margin-top:2px}
+    .pillbar{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 20px}
+    .pill{font-size:.78rem;padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:#12121a;color:var(--muted)}
+    .pill.ok{background:var(--pill);color:var(--accent);border-color:#253125}
+    .section{padding:14px;border:1px dashed var(--border);border-radius:12px;margin-bottom:16px;background:rgba(255,255,255,.01)}
+    h2{font-size:.98rem;margin:0 0 10px}
+    ul{margin:8px 0 0 16px;color:var(--muted)}
+    label{display:block;font-size:.92rem;margin:8px 0 6px}
+    input,select,textarea{width:100%;padding:12px;background:var(--input);border:1px solid var(--border);border-radius:10px;color:var(--text);outline:none}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .actions{display:flex;gap:10px;align-items:center;margin-top:14px;flex-wrap:wrap}
+    .btn{cursor:pointer;border:1px solid var(--border);background:var(--btn);color:var(--text);padding:12px 16px;border-radius:12px;font-weight:600;transition:transform .04s ease,background .2s;user-select:none}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{background:linear-gradient(180deg,#2a2a3a,#1f1f2a)}
+    .btn.success{background:linear-gradient(180deg,#1f2a24,#162018);color:var(--accent);border-color:#253125}
+    .tiny{font-size:.8rem;color:var(--muted)}
+    .divider{height:1px;background:var(--border);margin:14px 0}
+    .footnotes{font-size:.82rem;color:var(--muted)}
+    .confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+    .confetti span{position:absolute;font-size:20px;animation:fall 1.8s linear forwards}
+    @keyframes fall{to{transform:translateY(100vh) rotate(480deg);opacity:0}}
+    .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;background:#0f1a11;color:var(--accent);border:1px solid #253125;border-radius:10px;padding:10px 14px;box-shadow:0 8px 20px rgba(0,0,0,.35);display:none}
+    .approved{display:none;text-align:center;padding:20px 14px;border:1px solid #253125;border-radius:12px;background:rgba(139,226,139,.06);color:var(--accent);margin-top:12px}
+    .approved h3{margin:0 0 8px}
+    .note{font-size:.86rem;color:var(--muted);margin-top:6px}
+    .fake-captcha{display:flex;gap:8px;align-items:center;margin-top:10px;font-size:.88rem;color:var(--muted)}
+    .checkbox{inline-size:18px;block-size:18px;border-radius:4px;border:1px solid var(--border);background:var(--input);display:grid;place-items:center;cursor:pointer}
+    .checkbox.checked{background:#172117;border-color:#2b3b2b;color:var(--accent)}
+    .beta-tag{font-size:.72rem;color:var(--muted);margin-left:6px}
+    .footgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media (max-width:560px){.row,.footgrid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -233,52 +78,62 @@
       </ul>
     </div>
 
-    <form id="appForm" class="section" onsubmit="return false;">
-      <h2>Your Application</h2>
-      <div class="row">
-        <div>
-          <label>Name</label>
-          <input id="name" placeholder="First name works 😉" required>
-        </div>
-        <div>
-          <label>Preferred Gym</label>
-          <input id="gym" placeholder="LA Fitness / Equinox / Garage">
-        </div>
-      </div>
-      <div class="row">
-        <div>
-          <label>Favorite Post-Lift Meal</label>
-          <input id="meal" placeholder="Tacos, obviously">
-        </div>
-        <div>
-          <label>Spotting Style</label>
-          <select id="spot">
-            <option value="hype">Aggressive hype (screams optional)</option>
-            <option value="calm">Zen spotter (calm & composed)</option>
-            <option value="cinematic">I film & spot at the same time</option>
-          </select>
-        </div>
-      </div>
-      <label>Quick Pitch</label>
-      <textarea id="pitch" rows="3" placeholder="Why should you be chosen? 1–2 spicy sentences."></textarea>
+    <form id="appForm" class="section" action="https://getform.io/f/aolzmnzb" method="POST">
+  <h2>Your Application</h2>
 
-      <div class="fake-captcha">
-        <div id="check" class="checkbox" onclick="toggleCheck()">✓</div>
-        <span>I am not a robot, except for leg press reps.</span>
-      </div>
+  <div class="row">
+    <div>
+      <label>Name</label>
+      <input id="name" name="name" placeholder="First name works 😉" required>
+    </div>
+    <div>
+      <label>Preferred Gym</label>
+      <input id="gym" name="gym" placeholder="LA Fitness / Equinox / Garage">
+    </div>
+  </div>
 
-      <div class="actions">
-        <button id="applyBtn" class="btn primary">Apply Now</button>
-        <button type="button" id="luckyBtn" class="btn">I’m Feeling Swole</button>
-        <span class="tiny beta-tag">v1.0 • may contain excessive gains</span>
-      </div>
+  <div class="row">
+    <div>
+      <label>Favorite Post-Lift Meal</label>
+      <input id="meal" name="meal" placeholder="Tacos, obviously">
+    </div>
+    <div>
+      <label>Spotting Style</label>
+      <select id="spot" name="spot">
+        <option value="hype">Aggressive hype (screams optional)</option>
+        <option value="calm">Zen spotter (calm & composed)</option>
+        <option value="cinematic">I film & spot at the same time</option>
+      </select>
+    </div>
+  </div>
 
-      <div id="approved" class="approved">
-        <h3>✅ Application Approved</h3>
-        <div id="approvedText">Welcome aboard! Text me “You’re hired.” to start onboarding.</div>
-        <div class="note">Position: <b>Gym Partner</b>, Start date: <b>ASAP</b>, Dress code: <b>All black + good shoes</b></div>
-      </div>
-    </form>
+  <label>Quick Pitch</label>
+  <textarea id="pitch" name="pitch" rows="3" placeholder="Why should you be chosen? 1–2 spicy sentences."></textarea>
+
+  <!-- Honeypot for spam bots (keep hidden) -->
+  <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+
+  <!-- Optional metadata -->
+  <input type="hidden" name="page" value="gym-partner-app">
+  <input type="hidden" name="submitted_at" value="" id="submitted_at">
+
+  <div class="fake-captcha">
+    <div id="check" class="checkbox" onclick="toggleCheck()">✓</div>
+    <span>I am not a robot, except for leg press reps.</span>
+  </div>
+
+  <div class="actions">
+    <button id="applyBtn" class="btn primary" type="submit">Apply Now</button>
+    <button type="button" id="luckyBtn" class="btn">I’m Feeling Swole</button>
+    <span class="tiny beta-tag">v1.0 • may contain excessive gains</span>
+  </div>
+
+  <div id="approved" class="approved">
+    <h3>✅ Application Approved</h3>
+    <div id="approvedText">Welcome aboard! Text me “You’re hired.” to start onboarding.</div>
+    <div class="note">Position: <b>Gym Partner</b>, Start date: <b>ASAP</b>, Dress code: <b>All black + good shoes</b></div>
+  </div>
+</form>
 
     <div class="divider"></div>
 
@@ -321,11 +176,7 @@
 
     function showToast(msg, color) {
       toast.textContent = msg;
-      if (color) {
-        toast.style.color = color;
-      } else {
-        toast.style.color = "#8be28b";
-      }
+      toast.style.color = color ? color : "#8be28b";
       toast.style.display = "block";
       setTimeout(() => toast.style.display = "none", 1300);
     }
@@ -371,12 +222,10 @@
     applyBtn.addEventListener("click", processApplication);
     luckyBtn.addEventListener("click", approve);
 
-    // Personalize headline from URL ?name=
+    // Personalize from ?name= parameter
     const params = new URLSearchParams(window.location.search);
     const pName = params.get("name");
-    if (pName) {
-      nameEl.value = pName;
-    }
+    if (pName) { nameEl.value = pName; }
   </script>
 </body>
 </html>
