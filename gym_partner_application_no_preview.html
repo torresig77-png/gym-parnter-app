@@ -315,7 +315,7 @@
 
     function approve() {
       const name = (nameEl.value || "You").trim();
-      $("#approvedText").innerHTML = `Congrats, <b>${name}</b>. Position filled. Text me “You’re hired.” to lock it in.`;
+      $("#approvedText").innerHTML = `Congrats, <b>${name}</b>. Position filled. Text me “I'm hired.” to lock it in.`;
       approved.style.display = "block";
       burstConfetti();
       showToast("Approved ✔︎");
