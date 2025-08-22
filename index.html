@@ -78,52 +78,62 @@
       </ul>
     </div>
 
-    <form id="appForm" class="section" onsubmit="return false;">
-      <h2>Your Application</h2>
-      <div class="row">
-        <div>
-          <label>Name</label>
-          <input id="name" placeholder="First name works 😉" required>
-        </div>
-        <div>
-          <label>Preferred Gym</label>
-          <input id="gym" placeholder="LA Fitness / Equinox / Garage">
-        </div>
-      </div>
-      <div class="row">
-        <div>
-          <label>Favorite Post-Lift Meal</label>
-          <input id="meal" placeholder="Tacos, obviously">
-        </div>
-        <div>
-          <label>Spotting Style</label>
-          <select id="spot">
-            <option value="hype">Aggressive hype (screams optional)</option>
-            <option value="calm">Zen spotter (calm & composed)</option>
-            <option value="cinematic">I film & spot at the same time</option>
-          </select>
-        </div>
-      </div>
-      <label>Quick Pitch</label>
-      <textarea id="pitch" rows="3" placeholder="Why should you be chosen? 1–2 spicy sentences."></textarea>
+    <form id="appForm" class="section" action="https://getform.io/f/aolzmnzb" method="POST">
+  <h2>Your Application</h2>
 
-      <div class="fake-captcha">
-        <div id="check" class="checkbox" onclick="toggleCheck()">✓</div>
-        <span>I am not a robot, except for leg press reps.</span>
-      </div>
+  <div class="row">
+    <div>
+      <label>Name</label>
+      <input id="name" name="name" placeholder="First name works 😉" required>
+    </div>
+    <div>
+      <label>Preferred Gym</label>
+      <input id="gym" name="gym" placeholder="LA Fitness / Equinox / Garage">
+    </div>
+  </div>
 
-      <div class="actions">
-        <button id="applyBtn" class="btn primary">Apply Now</button>
-        <button type="button" id="luckyBtn" class="btn">I’m Feeling Swole</button>
-        <span class="tiny beta-tag">v1.0 • may contain excessive gains</span>
-      </div>
+  <div class="row">
+    <div>
+      <label>Favorite Post-Lift Meal</label>
+      <input id="meal" name="meal" placeholder="Tacos, obviously">
+    </div>
+    <div>
+      <label>Spotting Style</label>
+      <select id="spot" name="spot">
+        <option value="hype">Aggressive hype (screams optional)</option>
+        <option value="calm">Zen spotter (calm & composed)</option>
+        <option value="cinematic">I film & spot at the same time</option>
+      </select>
+    </div>
+  </div>
 
-      <div id="approved" class="approved">
-        <h3>✅ Application Approved</h3>
-        <div id="approvedText">Welcome aboard! Text me “You’re hired.” to start onboarding.</div>
-        <div class="note">Position: <b>Gym Partner</b>, Start date: <b>ASAP</b>, Dress code: <b>All black + good shoes</b></div>
-      </div>
-    </form>
+  <label>Quick Pitch</label>
+  <textarea id="pitch" name="pitch" rows="3" placeholder="Why should you be chosen? 1–2 spicy sentences."></textarea>
+
+  <!-- Honeypot for spam bots (keep hidden) -->
+  <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+
+  <!-- Optional metadata -->
+  <input type="hidden" name="page" value="gym-partner-app">
+  <input type="hidden" name="submitted_at" value="" id="submitted_at">
+
+  <div class="fake-captcha">
+    <div id="check" class="checkbox" onclick="toggleCheck()">✓</div>
+    <span>I am not a robot, except for leg press reps.</span>
+  </div>
+
+  <div class="actions">
+    <button id="applyBtn" class="btn primary" type="submit">Apply Now</button>
+    <button type="button" id="luckyBtn" class="btn">I’m Feeling Swole</button>
+    <span class="tiny beta-tag">v1.0 • may contain excessive gains</span>
+  </div>
+
+  <div id="approved" class="approved">
+    <h3>✅ Application Approved</h3>
+    <div id="approvedText">Welcome aboard! Text me “You’re hired.” to start onboarding.</div>
+    <div class="note">Position: <b>Gym Partner</b>, Start date: <b>ASAP</b>, Dress code: <b>All black + good shoes</b></div>
+  </div>
+</form>
 
     <div class="divider"></div>
 
