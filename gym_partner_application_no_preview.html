@@ -1,54 +1,54 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gym Partner Application — Decision</title>
+  <title>Gym Partner Application — Now Hiring (1)</title>
   <meta name="description" content="Apply to be my gym partner. Limited headcount. Must love PRs and post-lift tacos.">
+  <meta property="og:title" content="Gym Partner Application — Now Hiring (1)">
+  <meta property="og:description" content="Perks include: elite spotting, PR hype, and post-lift tacos. Apply now.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="data:image/svg+xml;charset=UTF-8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'><rect width='100%25' height='100%25' fill='black'/><text x='50%25' y='50%25' fill='white' font-size='56' font-family='Arial' text-anchor='middle' dominant-baseline='middle'>Gym Partner Application</text></svg>">
   <style>
-    :root {
-      --bg:#0b0b0f; --card:#15151c; --muted:#9aa0a6; --text:#e8eaed;
-      --accent:#8be28b; --danger:#ff6b6b; --border:#2a2a36;
-      --input:#101017; --btn:#20202a;
-      --danger-bg:#1f1212; --danger-border:#3a2323;
-    }
+    :root { --bg:#0b0b0f; --card:#15151c; --muted:#9aa0a6; --text:#e8eaed; --accent:#8be28b; --danger:#ff6b6b; --pill:#1f2a1f; --border:#2a2a36; --input:#101017; --btn:#20202a; }
     *{box-sizing:border-box}
-    body {
-      margin:0; background:radial-gradient(1000px 600px at 10% -10%,#111122 0%,#0b0b0f 40%);
-      color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-      line-height:1.4; min-height:100vh; display:grid; place-items:center; padding:24px;
-    }
-    .card {
-      width:100%; max-width:680px; background:linear-gradient(180deg,#15151c,#121219);
-      border:1px solid var(--border); border-radius:16px; padding:22px;
-      box-shadow:0 10px 30px rgba(0,0,0,.4); position:relative; overflow:hidden;
-    }
-    .glow {position:absolute; inset:-40%; background:radial-gradient(closest-side,rgba(139,226,139,.08),transparent 70%); filter:blur(20px);}
+    body{margin:0;background:radial-gradient(1000px 600px at 10% -10%, #111122 0%, #0b0b0f 40%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";line-height:1.4;min-height:100vh;display:grid;place-items:center;padding:24px}
+    .card{width:100%;max-width:680px;background:linear-gradient(180deg,#15151c,#121219);border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:0 10px 30px rgba(0,0,0,.4);position:relative;overflow:hidden}
+    .glow{position:absolute;inset:-40%;background:radial-gradient(closest-side,rgba(139,226,139,.08),transparent 70%);filter:blur(20px);pointer-events:none}
     header{display:flex;gap:14px;align-items:center;margin-bottom:12px}
     .logo{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:conic-gradient(from 120deg,#2b2b3a,#1b1b26 50%,#2b2b3a);border:1px solid var(--border);font-weight:800}
     .title-wrap h1{font-size:1.15rem;margin:0}
     .subtitle{font-size:.92rem;color:var(--muted);margin-top:2px}
     .pillbar{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 20px}
     .pill{font-size:.78rem;padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:#12121a;color:var(--muted)}
-    .pill.ok{background:#1f2a1f;color:var(--accent);border-color:#253125}
+    .pill.ok{background:var(--pill);color:var(--accent);border-color:#253125}
     .section{padding:14px;border:1px dashed var(--border);border-radius:12px;margin-bottom:16px;background:rgba(255,255,255,.01)}
     h2{font-size:.98rem;margin:0 0 10px}
     ul{margin:8px 0 0 16px;color:var(--muted)}
     label{display:block;font-size:.92rem;margin:8px 0 6px}
-    input,select,textarea{width:100%;padding:12px;background:var(--input);border:1px solid var(--border);border-radius:10px;color:var(--text)}
+    input,select,textarea{width:100%;padding:12px;background:var(--input);border:1px solid var(--border);border-radius:10px;color:var(--text);outline:none}
     .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
     .actions{display:flex;gap:10px;align-items:center;margin-top:14px;flex-wrap:wrap}
-    .btn{cursor:pointer;border:1px solid var(--border);background:var(--btn);color:var(--text);padding:12px 16px;border-radius:12px;font-weight:600}
+    .btn{cursor:pointer;border:1px solid var(--border);background:var(--btn);color:var(--text);padding:12px 16px;border-radius:12px;font-weight:600;transition:transform .04s ease,background .2s;user-select:none}
+    .btn:hover{transform:translateY(-1px)}
     .btn.primary{background:linear-gradient(180deg,#2a2a3a,#1f1f2a)}
+    .btn.success{background:linear-gradient(180deg,#1f2a24,#162018);color:var(--accent);border-color:#253125}
+    .tiny{font-size:.8rem;color:var(--muted)}
     .divider{height:1px;background:var(--border);margin:14px 0}
     .footnotes{font-size:.82rem;color:var(--muted)}
     .confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden}
-    .confetti span{position:absolute;font-size:28px;animation:fall 1.8s linear forwards}
-    @keyframes fall{to{transform:translateY(100vh) rotate(180deg);opacity:0}}
-    .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;background:#1a1010;color:var(--danger);border:1px solid var(--danger-border);border-radius:10px;padding:10px 14px;box-shadow:0 8px 20px rgba(0,0,0,.35);display:none}
-    .declined{display:none;text-align:center;padding:20px 14px;border:1px solid var(--danger-border);border-radius:12px;background:var(--danger-bg);color:var(--danger);margin-top:12px}
-    .declined h3{margin:0 0 8px}
+    .confetti span{position:absolute;font-size:20px;animation:fall 1.8s linear forwards}
+    @keyframes fall{to{transform:translateY(100vh) rotate(480deg);opacity:0}}
+    .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;background:#1a1010;color:var(--danger);border:1px solid #3a2323;border-radius:10px;padding:10px 14px;box-shadow:0 8px 20px rgba(0,0,0,.35);display:none}
+    .approved{display:none;text-align:center;padding:20px 14px;border:1px solid #253125;border-radius:12px;background:rgba(139,226,139,.06);color:var(--accent);margin-top:12px}
+    .approved h3{margin:0 0 8px}
     .note{font-size:.86rem;color:var(--muted);margin-top:6px}
+    .fake-captcha{display:flex;gap:8px;align-items:center;margin-top:10px;font-size:.88rem;color:var(--muted)}
+    .checkbox{inline-size:18px;block-size:18px;border-radius:4px;border:1px solid var(--border);background:var(--input);display:grid;place-items:center;cursor:pointer}
+    .checkbox.checked{background:#172117;border-color:#2b3b2b;color:var(--accent)}
+    .beta-tag{font-size:.72rem;color:var(--muted);margin-left:6px}
+    .footgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media (max-width:560px){.row,.footgrid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -78,38 +78,54 @@
       </ul>
     </div>
 
-    <form id="appForm" class="section" action="https://getform.io/f/aolzmnzb" method="POST">
+    <form id="appForm" class="section" onsubmit="return false;">
       <h2>Your Application</h2>
       <div class="row">
-        <div><label>Name</label><input id="name" name="name" placeholder="First name works 😉" required></div>
-        <div><label>Preferred Gym</label><input id="gym" name="gym" placeholder="LA Fitness / Equinox / Garage"></div>
+        <div>
+          <label>Name</label>
+          <input id="name" placeholder="First name works 😉" required>
+        </div>
+        <div>
+          <label>Preferred Gym</label>
+          <input id="gym" placeholder="LA Fitness / Equinox / Garage">
+        </div>
       </div>
       <div class="row">
-        <div><label>Favorite Post-Lift Meal</label><input id="meal" name="meal" placeholder="Tacos, obviously"></div>
-        <div><label>Spotting Style</label>
-          <select id="spot" name="spot">
-            <option value="hype">Aggressive hype</option>
-            <option value="calm">Zen spotter</option>
-            <option value="cinematic">I film & spot</option>
+        <div>
+          <label>Favorite Post-Lift Meal</label>
+          <input id="meal" placeholder="Tacos, obviously">
+        </div>
+        <div>
+          <label>Spotting Style</label>
+          <select id="spot">
+            <option value="hype">Aggressive hype (screams optional)</option>
+            <option value="calm">Zen spotter (calm & composed)</option>
+            <option value="cinematic">I film & spot at the same time</option>
           </select>
         </div>
       </div>
       <label>Quick Pitch</label>
-      <textarea id="pitch" name="pitch" rows="3" placeholder="Why should you be chosen?"></textarea>
+      <textarea id="pitch" rows="3" placeholder="Why should you be chosen? 1–2 spicy sentences."></textarea>
 
-      <!-- spam honeypot -->
-      <input type="text" name="website" style="display:none">
-      <input type="hidden" name="submitted_at" value="" id="submitted_at">
-
-      <div class="actions">
-        <button id="applyBtn" class="btn primary" type="submit">Apply Now</button>
+      <div class="fake-captcha">
+        <div id="check" class="checkbox" onclick="toggleCheck()">✓</div>
+        <span>I am not a robot, except for leg press reps.</span>
       </div>
 
-      <div id="declined" class="declined">
+      <div class="actions">
+        <button id="applyBtn" class="btn primary">Apply Now</button>
+        <button type="button" id="luckyBtn" class="btn">I’m Feeling Swole</button>
+        <span class="tiny beta-tag">v1.0 • may contain excessive gains</span>
+      </div>
+
+      <!-- changed: approval panel -> declined panel (kept same structure/classes to preserve layout) -->
+      <div id="decision" class="approved" style="background:rgba(255,107,107,0.08);color:var(--danger);border-color:#3a2323">
         <h3>❌ Application Declined</h3>
-        <div id="declinedText">Sorry, your vibes didn’t make the cut.<br>
-        👉 Text <b>714-248-4629</b> to submit an appeal.</div>
-        <div class="note">Pro tip: playlist links improve future chances.</div>
+        <div id="decisionText">
+          Sorry, your vibes didn’t make the cut this round.<br>
+          👉 Text <a href="tel:17142484629" style="color:inherit;text-decoration:underline">714-248-4629</a> to submit an appeal.
+        </div>
+        <div class="note">Pro tip: playlist links dramatically improve future vibes.</div>
       </div>
     </form>
 
@@ -134,54 +150,77 @@
     </div>
   </div>
 
-  <div id="confetti" class="confetti"></div>
-  <div id="toast" class="toast">Submitting…</div>
+  <div id="confetti" class="confetti" aria-hidden="true"></div>
+  <div id="toast" class="toast">Processing application…</div>
 
   <script>
-    const form = document.querySelector("#appForm");
-    const declined = document.querySelector("#declined");
-    const toast = document.querySelector("#toast");
-    const confetti = document.querySelector("#confetti");
-    const tsEl = document.querySelector("#submitted_at");
+    const $ = (sel) => document.querySelector(sel);
+    const confetti = $("#confetti");
+    const toast = $("#toast");
+    const decision = $("#decision");
+    const nameEl = $("#name");
+    const applyBtn = $("#applyBtn");
+    const luckyBtn = $("#luckyBtn");
+    let checked = false;
 
-    if (tsEl) tsEl.value = new Date().toISOString();
-
-    function showToast(msg) {
-      toast.textContent = msg;
-      toast.style.display = "block";
-      setTimeout(()=>toast.style.display="none",1300);
+    function toggleCheck() {
+      checked = !checked;
+      $("#check").classList.toggle("checked", checked);
     }
 
+    function showToast(msg, color) {
+      toast.textContent = msg;
+      toast.style.color = color ? color : "var(--danger)";
+      toast.style.display = "block";
+      setTimeout(() => toast.style.display = "none", 1300);
+    }
+
+    // changed: thumbs-down rain instead of confetti
     function thumbsDownRain() {
-      for (let i=0; i<40; i++) {
-        const span = document.createElement("span");
-        span.textContent = "👎";
-        span.style.left = Math.random()*100 + "vw";
-        span.style.top = "-5vh";
-        span.style.animationDuration = (1.2+Math.random()*1.2) + "s";
-        confetti.appendChild(span);
-        setTimeout(()=>span.remove(),2500);
+      for (let i = 0; i < 60; i++) {
+        const s = document.createElement("span");
+        s.textContent = "👎";
+        s.style.left = Math.random() * 100 + "vw";
+        s.style.top = "-5vh";
+        s.style.transform = "translateY(0)";
+        s.style.animationDuration = (1.2 + Math.random()*1.2) + "s";
+        confetti.appendChild(s);
+        setTimeout(() => s.remove(), 2500);
       }
     }
 
+    // changed: show declined panel instead of approved
     function decline() {
-      declined.style.display = "block";
+      const name = (nameEl.value || "Applicant").trim();
+      $("#decisionText").innerHTML = `Sorry, <b>${name}</b>. Your vibes didn’t make the cut this round.<br>👉 Text <a href="tel:17142484629" style="color:inherit;text-decoration:underline">714-248-4629</a> to submit an appeal.`;
+      decision.style.display = "block";
       thumbsDownRain();
       showToast("Declined ❌");
     }
 
-    form.addEventListener("submit", async (e)=>{
-      e.preventDefault();
-      showToast("Submitting…");
-      try {
-        const data = new FormData(form);
-        await fetch(form.action, { method:"POST", body:data, headers:{Accept:"application/json"} });
-        decline();
-        form.reset();
-      } catch(err) {
-        decline();
+    function processApplication() {
+      if (!checked) {
+        showToast("Please confirm you are not a robot (or at least a friendly one).");
+        return;
       }
-    });
+      decision.style.display = "none";
+      showToast("Processing application…");
+      applyBtn.disabled = true;
+      luckyBtn.disabled = true;
+      setTimeout(() => {
+        decline();
+        applyBtn.disabled = false;
+        luckyBtn.disabled = false;
+      }, 1100);
+    }
+
+    applyBtn.addEventListener("click", processApplication);
+    luckyBtn.addEventListener("click", decline);
+
+    // Personalize from ?name= parameter
+    const params = new URLSearchParams(window.location.search);
+    const pName = params.get("name");
+    if (pName) { nameEl.value = pName; }
   </script>
 </body>
 </html>
