@@ -8,69 +8,76 @@
   <style>
     :root {
       --bg:#0b0b0f; --card:#15151c; --muted:#9aa0a6; --text:#e8eaed;
-      --danger:#ff6b6b; --border:#2a2a36; --input:#101017; --btn:#20202a;
+      --accent:#8be28b; --danger:#ff6b6b; --border:#2a2a36;
+      --input:#101017; --btn:#20202a;
       --danger-bg:#1f1212; --danger-border:#3a2323;
     }
-    * { box-sizing: border-box; }
+    *{box-sizing:border-box}
     body {
-      margin: 0;
-      background: radial-gradient(1000px 600px at 10% -10%, #111122 0%, #0b0b0f 40%);
-      color: var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      line-height: 1.4; min-height: 100vh;
-      display: grid; place-items: center; padding: 24px;
+      margin:0; background:radial-gradient(1000px 600px at 10% -10%,#111122 0%,#0b0b0f 40%);
+      color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      line-height:1.4; min-height:100vh; display:grid; place-items:center; padding:24px;
     }
     .card {
-      width: 100%; max-width: 680px;
-      background: linear-gradient(180deg, #15151c, #121219);
-      border: 1px solid var(--border); border-radius: 16px;
-      padding: 22px; box-shadow: 0 10px 30px rgba(0,0,0,.4);
-      position: relative; overflow: hidden;
+      width:100%; max-width:680px; background:linear-gradient(180deg,#15151c,#121219);
+      border:1px solid var(--border); border-radius:16px; padding:22px;
+      box-shadow:0 10px 30px rgba(0,0,0,.4); position:relative; overflow:hidden;
     }
-    header { display:flex; gap:14px; align-items:center; margin-bottom:12px; }
-    .logo { width:46px; height:46px; border-radius:12px; display:grid; place-items:center;
-      background: conic-gradient(from 120deg,#2b2b3a,#1b1b26 50%,#2b2b3a); border:1px solid var(--border); font-weight:800; }
-    .title-wrap h1 { font-size: 1.15rem; margin:0; }
-    .subtitle { font-size:.92rem; color:var(--muted); margin-top:2px; }
-    .section { padding:14px; border:1px dashed var(--border); border-radius:12px; margin-bottom:16px; background: rgba(255,255,255,.01); }
-    label { display:block; font-size:.92rem; margin:8px 0 6px; }
-    input, select, textarea {
-      width:100%; padding:12px; background:var(--input);
-      border:1px solid var(--border); border-radius:10px; color:var(--text);
-    }
-    .row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-    .actions { display:flex; gap:10px; align-items:center; margin-top:14px; flex-wrap:wrap; }
-    .btn { cursor:pointer; border:1px solid var(--border); background:var(--btn); color:var(--text);
-      padding:12px 16px; border-radius:12px; font-weight:600; }
-    .btn:hover { transform: translateY(-1px); }
-    .divider { height:1px; background:var(--border); margin:14px 0; }
-    .confetti { position:fixed; inset:0; pointer-events:none; overflow:hidden; }
-    .confetti span { position:absolute; font-size:26px; animation:fall 1.8s linear forwards; }
-    @keyframes fall { to { transform:translateY(100vh) rotate(180deg); opacity:0; } }
-    .toast {
-      position:fixed; left:50%; transform:translateX(-50%); bottom:20px;
-      background:#1a1010; color:var(--danger); border:1px solid var(--danger-border);
-      border-radius:10px; padding:10px 14px; box-shadow:0 8px 20px rgba(0,0,0,.35); display:none;
-    }
-    .declined {
-      display:none; text-align:center; padding:20px 14px;
-      border:1px solid var(--danger-border); border-radius:12px;
-      background: var(--danger-bg); color: var(--danger); margin-top:12px;
-    }
-    .declined h3 { margin:0 0 8px 0; }
+    .glow {position:absolute; inset:-40%; background:radial-gradient(closest-side,rgba(139,226,139,.08),transparent 70%); filter:blur(20px);}
+    header{display:flex;gap:14px;align-items:center;margin-bottom:12px}
+    .logo{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:conic-gradient(from 120deg,#2b2b3a,#1b1b26 50%,#2b2b3a);border:1px solid var(--border);font-weight:800}
+    .title-wrap h1{font-size:1.15rem;margin:0}
+    .subtitle{font-size:.92rem;color:var(--muted);margin-top:2px}
+    .pillbar{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 20px}
+    .pill{font-size:.78rem;padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:#12121a;color:var(--muted)}
+    .pill.ok{background:#1f2a1f;color:var(--accent);border-color:#253125}
+    .section{padding:14px;border:1px dashed var(--border);border-radius:12px;margin-bottom:16px;background:rgba(255,255,255,.01)}
+    h2{font-size:.98rem;margin:0 0 10px}
+    ul{margin:8px 0 0 16px;color:var(--muted)}
+    label{display:block;font-size:.92rem;margin:8px 0 6px}
+    input,select,textarea{width:100%;padding:12px;background:var(--input);border:1px solid var(--border);border-radius:10px;color:var(--text)}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .actions{display:flex;gap:10px;align-items:center;margin-top:14px;flex-wrap:wrap}
+    .btn{cursor:pointer;border:1px solid var(--border);background:var(--btn);color:var(--text);padding:12px 16px;border-radius:12px;font-weight:600}
+    .btn.primary{background:linear-gradient(180deg,#2a2a3a,#1f1f2a)}
+    .divider{height:1px;background:var(--border);margin:14px 0}
+    .footnotes{font-size:.82rem;color:var(--muted)}
+    .confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+    .confetti span{position:absolute;font-size:28px;animation:fall 1.8s linear forwards}
+    @keyframes fall{to{transform:translateY(100vh) rotate(180deg);opacity:0}}
+    .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;background:#1a1010;color:var(--danger);border:1px solid var(--danger-border);border-radius:10px;padding:10px 14px;box-shadow:0 8px 20px rgba(0,0,0,.35);display:none}
+    .declined{display:none;text-align:center;padding:20px 14px;border:1px solid var(--danger-border);border-radius:12px;background:var(--danger-bg);color:var(--danger);margin-top:12px}
+    .declined h3{margin:0 0 8px}
+    .note{font-size:.86rem;color:var(--muted);margin-top:6px}
   </style>
 </head>
 <body>
   <div class="card">
+    <div class="glow"></div>
     <header>
       <div class="logo">🏋️‍♂️</div>
       <div class="title-wrap">
         <h1>Gym Partner Application</h1>
-        <div class="subtitle">Only the strongest vibes survive.</div>
+        <div class="subtitle">Now accepting <b>exactly 1</b> elite candidate. Position closes when vibes are immaculate.</div>
       </div>
     </header>
 
-    <!-- FORM wired to Getform -->
+    <div class="pillbar">
+      <span class="pill ok">Status: OPEN</span>
+      <span class="pill">Pay: High-fives &amp; post-lift tacos</span>
+      <span class="pill">Location: Wherever the good lighting is</span>
+    </div>
+
+    <div class="section">
+      <h2>Role &amp; Requirements</h2>
+      <ul>
+        <li>Must hype PRs like it’s the Super Bowl.</li>
+        <li>Understands <em>“one more set”</em> could mean eight.</li>
+        <li>Comfortable filming cinematic 0.5x angles.</li>
+        <li>Availability for rogue ice cream runs after leg day.</li>
+      </ul>
+    </div>
+
     <form id="appForm" class="section" action="https://getform.io/f/aolzmnzb" method="POST">
       <h2>Your Application</h2>
       <div class="row">
@@ -89,19 +96,42 @@
       </div>
       <label>Quick Pitch</label>
       <textarea id="pitch" name="pitch" rows="3" placeholder="Why should you be chosen?"></textarea>
+
+      <!-- spam honeypot -->
+      <input type="text" name="website" style="display:none">
       <input type="hidden" name="submitted_at" value="" id="submitted_at">
 
       <div class="actions">
-        <button id="applyBtn" class="btn primary" type="submit">Submit Application</button>
+        <button id="applyBtn" class="btn primary" type="submit">Apply Now</button>
       </div>
 
-      <!-- Declined panel -->
       <div id="declined" class="declined">
         <h3>❌ Application Declined</h3>
         <div id="declinedText">Sorry, your vibes didn’t make the cut.<br>
         👉 Text <b>714-248-4629</b> to submit an appeal.</div>
+        <div class="note">Pro tip: playlist links improve future chances.</div>
       </div>
     </form>
+
+    <div class="divider"></div>
+
+    <div class="footgrid">
+      <div class="section">
+        <h2>Perks</h2>
+        <ul>
+          <li>Elite spotting + top-tier gym memes.</li>
+          <li>Guaranteed 12% increase in average vibe.</li>
+          <li>Optional Sunday walks to discuss deload philosophies.</li>
+        </ul>
+      </div>
+      <div class="section">
+        <h2>Small Print</h2>
+        <div class="footnotes">
+          By applying you agree to: sharing playlists, celebrating small wins,
+          and pretending <i>“last set”</i> means anything. No reps were harmed in the making of this page.
+        </div>
+      </div>
+    </div>
   </div>
 
   <div id="confetti" class="confetti"></div>
@@ -145,9 +175,7 @@
       showToast("Submitting…");
       try {
         const data = new FormData(form);
-        await fetch(form.action, {
-          method:"POST", body:data, headers:{Accept:"application/json"}
-        });
+        await fetch(form.action, { method:"POST", body:data, headers:{Accept:"application/json"} });
         decline();
         form.reset();
       } catch(err) {
